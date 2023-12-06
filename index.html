@@ -14,7 +14,7 @@
         <h1>Simulador de Plazo Fijo</h1>
         <button id="miBoton">Iniciar simulación</button>
         <script>
-          function simularPlazoFijo() {
+            function simularPlazoFijo() {
             alert("¡Bienvenido al simulador de plazo fijo!");
     
             let tasainteresmensual = 0.098;
@@ -24,6 +24,7 @@
             while (isNaN(capital) || capital <= 0) {
               alert("Has ingresado un capital inválido. Por favor, ingresa un número positivo.");
               capital = parseInt(prompt("Capital a invertir:"));
+            
             }
     
             let duracion = parseInt(prompt("Duración del plazo fijo (en meses):"));
@@ -53,8 +54,7 @@
 
         alert("Gracias por usar mi simulador de plazo fijo");
       }
-
-      const button = document.getElementById('miBoton');
+        const button = document.getElementById('miBoton');
       button.addEventListener('click', simularPlazoFijo);
     </script>
   </div>
