@@ -4,61 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Simulador de plazo fijo</title>
+    <title>Calculadora</title>
     <script src="./index.js"></script>
 </head>
 <body>
-<section>
-<main> 
-    <div class="container">
-        <h1>Simulador de Plazo Fijo</h1>
-        <button id="miBoton">Iniciar simulación</button>
-        <script>
-            function simularPlazoFijo() {
-            alert("¡Bienvenido al simulador de plazo fijo!");
-    
-            let tasainteresmensual = 0.098;
-            let tasainteresanual = 1.18;
-    
-            let capital = parseInt(prompt("Capital a invertir:"));
-            while (isNaN(capital) || capital <= 0) {
-              alert("Has ingresado un capital inválido. Por favor, ingresa un número positivo.");
-              capital = parseInt(prompt("Capital a invertir:"));
-            
-            }
-    
-            let duracion = parseInt(prompt("Duración del plazo fijo (en meses):"));
-            while (isNaN(duracion) || duracion <= 0) {
-              alert("Has ingresado una duración inválida. Por favor, ingresa un número positivo.");
-              duracion = parseInt(prompt("Duración del plazo fijo (en meses):"));
-            }
-    
-            let tasa = parseInt(prompt("Ingrese el tipo de tasa:\n0 - Mensualmente\n1 - Anualmente"));
-            while (tasa !== 0 && tasa !== 1) {
-              alert("Has ingresado una opción inválida. Por favor, selecciona 0 o 1.");
-              tasa = parseInt(prompt("Ingrese el tipo de tasa:\n0 - Mensualmente\n1 - Anualmente"));
-            }
-    
-            let tasaInteres = tasa === 0 ? tasainteresmensual : tasainteresanual;
-            let saldoFinal = capital * (1 + tasaInteres) ** duracion;
-    
-            alert(`PLAZO FIJO:
-            Capital invertido: ${capital}
-            Duración: ${duracion} meses
-            Tasa de interés: ${(tasaInteres * 100).toFixed(2)}%
-            Saldo final: ${saldoFinal.toFixed(2)}`);
-            let reinversion = confirm("¿Deseas reinvertir los intereses al finalizar el plazo?");
-        if (reinversion) {
-          capital = saldoFinal;
-        }
 
-        alert("Gracias por usar mi simulador de plazo fijo");
-      }
-        const button = document.getElementById('miBoton');
-      button.addEventListener('click', simularPlazoFijo);
-    </script>
+  <div class="calculator-box">
+    <h1>Calculadora</h1>
+    <input type="text" id="num1" placeholder="Ingrese el primer número">
+    <input type="text" id="num2" placeholder="Ingrese el segundo número">
+    <br>
+    <button onclick="calcular('suma')">Sumar</button>
+    <button onclick="calcular('resta')">Restar</button>
+    <button onclick="calcular('multiplicacion')">Multiplicar</button>
+    <button onclick="calcular('division')">Dividir</button>
+    <div id="result"></div>
   </div>
-</main>
-</section>
+
+  <script>
+    function calcular(operacion) {
+      var num1 = parseFloat(document.getElementById("num1").value);
+      var num2 = parseFloat(document.getElementById("num2").value);
+      var result;
+
+      switch (operacion) {
+        case 'suma':
+          result = num1 + num2;
+          break;
+        case 'resta':
+          result = num1 - num2;
+          break;
+        case 'multiplicacion':
+          result = num1 * num2;
+          break;
+        case 'division':
+          if (num2 === 0) {
+            result = "Error: división por cero";
+          } else {
+            result = num1 / num2;
+          }
+          break;
+        default:
+          result = "Operación inválida";
+      }
+
+      document.getElementById("result").innerHTML = "Resultado: " + result;
+    }
+  </script>
+
 </body>
 </html>

@@ -1,37 +1,76 @@
-alert("SIMULADOR DE PLAZO FIJO");
-let tasainteresmensual = 0.098;
-let tasainteresanual = 1.18;
 
-do {
-  let capital = parseInt(prompt(`Capital a invertir `));
-  let tasa = parseInt(
-    prompt(`Ingrese el tipo de tasa:
-0-Mensualmente
-1-Anualmente`)
-  );
-  console.log(tasa);
+// Declarar variables y objetivos necesarios
+var num1, num2;
 
-  while (tasa > 1 || tasa < 0 || tasa == NaN) {
-    alert("Has ingresado una opción invalida");
-    tasa = parseInt(
-      prompt(`Ingrese el tipo de tasa:
-    0-Mensualmente
-    1-Anualmente`)
-    );
+// Funciones y métodos para realizar operaciones
+function sumar(num1, num2) {
+  return num1 + num2;
+}
+
+function restar(num1, num2) {
+  return num1 - num2;
+}
+
+function multiplicar(num1, num2) {
+  return num1 * num2;
+}
+
+function dividir(num1, num2) {
+  if (num2 === 0) {
+    return "Error: división por cero";
+  }
+  return num1 / num2;
+}
+
+function calcularPorcentaje(num1, num2) {
+  return (num1 * num2) / 100;
+}
+
+// Obtener los números de entrada del usuario
+num1 = parseFloat(prompt("Ingrese el primer número:"));
+num2 = parseFloat(prompt("Ingrese el segundo número:"));
+
+// Validar que los números sean válidos
+if (isNaN(num1) || isNaN(num2)) {
+  alert("Error: Ingrese números válidos");
+} else {
+  // Realizar operaciones
+  var suma = sumar(num1, num2);
+  var resta = restar(num1, num2);
+  var multiplicacion = multiplicar(num1, num2);
+  var division = dividir(num1, num2);
+  var porcentaje = calcularPorcentaje(num1, num2);
+
+  // Efectuar una salida del resultado
+  console.log("=== Resultado de la calculadora ===");
+  console.log("Primer número: " + num1);
+  console.log("Segundo número: " + num2);
+  console.log("------------------------------");
+  console.log("Suma: " + suma);
+  console.log("Resta: " + resta);
+  console.log("Multiplicación: " + multiplicacion);
+  console.log("División: " + division);
+  console.log("Porcentaje: " + porcentaje);
+  console.log("------------------------------");
+  console.log("¡Gracias por utilizar la calculadora!");
+
+  // Función para mostrar el resultado en una ventana emergente
+  function mostrarResultado() {
+    var resultado = "=== Resultado de la calculadora ===\n" +
+      "Primer número: " + num1 + "\n" +
+      "Segundo número: " + num2 + "\n" +
+      "------------------------------\n" +
+      "Suma: " + suma + "\n" +
+      "Resta: " + resta + "\n" +
+      "Multiplicación: " + multiplicacion + "\n" +
+      "División: " + division + "\n" +
+      "Porcentaje: " + porcentaje + "\n" +
+      "------------------------------\n" +
+      "¡Gracias por utilizar la calculadora!";
+    alert(resultado);
   }
 
-  if (tasa == 0) {
-    alert("Perfecto su simulacion sera mensualmemente");
-    alert(`PLAZO FIJO MENSUAL:
-    CAPITAL: ${capital}
-    TASA DE INTERES: ${tasainteresmensual}
-    SALDO FINAL:${capital + capital * tasainteresmensual} `);
-  } else if (tasa == 1) {
-    alert(`Perfecto su simulación sera anualmente `);
-    alert(`PLAZO FIJO ANUAL:
-CAPITAL: ${capital} 
-TASA DE INTERES: ${tasainteresanual} 
-SALDO FINAL:${capital + capital * tasainteresanual} `);
-  }
-} while (confirm("¿Quiere realizar otro plazo fijo?"));
-alert("Gracias por usar mi simulador de plazo fijo");
+  // Llamar a la función para mostrar el resultado en una ventana emergente
+  mostrarResultado();
+}
+ 
