@@ -1,56 +1,21 @@
-<!DOCTYPE html  
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Calculadora</title>
-    <script src="./index.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Mayorista de bebidas</title>
 </head>
 <body>
+  <h1>Mayorista de Bebidas</h1>
+  <div id="productos" class="grid-container"></div>
 
-  <div class="calculator-box">
-    <h1>Calculadora</h1>
-    <input type="text" id="num1" placeholder="Ingrese el primer número">
-    <input type="text" id="num2" placeholder="Ingrese el segundo número">
-    <br>
-    <button onclick="calcular('suma')">Sumar</button>
-    <button onclick="calcular('resta')">Restar</button>
-    <button onclick="calcular('multiplicacion')">Multiplicar</button>
-    <button onclick="calcular('division')">Dividir</button>
-    <div id="result"></div>
-  </div>
+  <h2>Carrito</h2>
+  <div id="carrito"></div>
+  <p id="sumaTotal"></p>
+  
 
-  <script>
-    function calcular(operacion) {
-      var num1 = parseFloat(document.getElementById("num1").value);
-      var num2 = parseFloat(document.getElementById("num2").value);
-      var result;
 
-      switch (operacion) {
-        case 'suma':
-          result = num1 + num2;
-          break;
-        case 'resta':
-          result = num1 - num2;
-          break;
-        case 'multiplicacion':
-          result = num1 * num2;
-          break;
-        case 'division':
-          if (num2 === 0) {
-            result = "Error: división por cero";
-          } else {
-            result = num1 / num2;
-          }
-          break;
-        default:
-          result = "Operación inválida";
-      }
-
-      document.getElementById("result").innerHTML = "Resultado: " + result;
-    }
-  </script>
-
+  <script src="./index.js"></script>
 </body>
 </html>

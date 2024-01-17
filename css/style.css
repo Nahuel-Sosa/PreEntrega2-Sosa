@@ -1,29 +1,38 @@
-.calculator-box {
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .card {
     border: 1px solid #ccc;
-    padding: 20px;
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  h1 {
-    font-size: 24px;
-  }
-  input[type="number"] {
-    width: 100%;
     padding: 10px;
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .card p {
     margin-bottom: 10px;
   }
-  button {
-    padding: 10px 20px;
+  
+  .card button {
     background-color: #4CAF50;
     color: white;
+    padding: 5px 10px;
     border: none;
     cursor: pointer;
   }
-  button:hover {
+  
+  .card button:hover {
     background-color: #45a049;
   }
-  #result {
-    font-size: 18px;
-    margin-top: 10px;
-  }
+
+  

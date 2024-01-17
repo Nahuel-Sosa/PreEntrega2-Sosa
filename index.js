@@ -1,76 +1,80 @@
+ 
+const productos = [
+  { id:1, nombre: " Cocacola", precio: 1900.99, img:'1.jpg'},
+  { id:2,nombre: "Fanta", precio: 1900.99 },
+  { id:3,nombre: "Sprite", precio: 1900.99 },
+  { id:4,nombre: "Quimes", precio: 2300.99 },
+  { id:5,nombre: "Fernet", precio: 7000.99 },
+  { id:6,nombre: "Gancia", precio: 5400.99 },
+  { id:7,nombre: "Campari", precio: 5200.99 },
+  { id:8,nombre: "Smirnof", precio: 10000.99 }]
+  
+  let carrito = [];
 
-// Declarar variables y objetivos necesarios
-var num1, num2;
+function mostrarProductos() {
+  const productosElement = document.getElementById('productos');
+  productosElement.innerHTML = '';
 
-// Funciones y métodos para realizar operaciones
-function sumar(num1, num2) {
-  return num1 + num2;
+  productos.forEach(producto => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <h3>${producto.nombre}</h3>
+      <p>Precio: $${producto.precio.toFixed(2)}</p>
+      <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+    `;
+    productosElement.appendChild(card);
+  });
 }
 
-function restar(num1, num2) {
-  return num1 - num2;
+function agregarAlCarrito(id) {
+  const producto = productos.find(producto => producto.id === id);
+  if (producto) {
+    carrito.push(producto);
+    mostrarCarrito();}}
+
+function mostrarCarrito() {
+  const carritoElement = document.getElementById('carrito');
+  carritoElement.innerHTML = '';
+
+  carrito.forEach(producto => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <h3>${producto.nombre}</h3>
+      <p>Precio: $${producto.precio.toFixed(2)}</p>
+      <button onclick="eliminarProducto(${producto.id})">Eliminar</button>
+  
+    `;
+    carritoElement.appendChild(card);
+  });
+
+  calcularSumaTotal();
 }
 
-function multiplicar(num1, num2) {
-  return num1 * num2;
-}
 
-function dividir(num1, num2) {
-  if (num2 === 0) {
-    return "Error: división por cero";
+
+function eliminarProducto(id) {
+  const index = carrito.findIndex(producto => producto.id === id);
+  if (index !== -1) {
+    carrito.splice(index, 1);
+    mostrarCarrito();
   }
-  return num1 / num2;
 }
 
-function calcularPorcentaje(num1, num2) {
-  return (num1 * num2) / 100;
+
+function calcularSumaTotal() {
+  const sumaTotalElement = document.getElementById('sumaTotal');
+  const sumaTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
+  sumaTotalElement.innerHTML = "Suma total: $".concat(sumaTotal.toFixed(2));
+}
+ 
+
+function vaciarCarrito() {
+  carrito = [];
+  mostrarCarrito();
 }
 
-// Obtener los números de entrada del usuario
-num1 = parseFloat(prompt("Ingrese el primer número:"));
-num2 = parseFloat(prompt("Ingrese el segundo número:"));
 
-// Validar que los números sean válidos
-if (isNaN(num1) || isNaN(num2)) {
-  alert("Error: Ingrese números válidos");
-} else {
-  // Realizar operaciones
-  var suma = sumar(num1, num2);
-  var resta = restar(num1, num2);
-  var multiplicacion = multiplicar(num1, num2);
-  var division = dividir(num1, num2);
-  var porcentaje = calcularPorcentaje(num1, num2);
-
-  // Efectuar una salida del resultado
-  console.log("=== Resultado de la calculadora ===");
-  console.log("Primer número: " + num1);
-  console.log("Segundo número: " + num2);
-  console.log("------------------------------");
-  console.log("Suma: " + suma);
-  console.log("Resta: " + resta);
-  console.log("Multiplicación: " + multiplicacion);
-  console.log("División: " + division);
-  console.log("Porcentaje: " + porcentaje);
-  console.log("------------------------------");
-  console.log("¡Gracias por utilizar la calculadora!");
-
-  // Función para mostrar el resultado en una ventana emergente
-  function mostrarResultado() {
-    var resultado = "=== Resultado de la calculadora ===\n" +
-      "Primer número: " + num1 + "\n" +
-      "Segundo número: " + num2 + "\n" +
-      "------------------------------\n" +
-      "Suma: " + suma + "\n" +
-      "Resta: " + resta + "\n" +
-      "Multiplicación: " + multiplicacion + "\n" +
-      "División: " + division + "\n" +
-      "Porcentaje: " + porcentaje + "\n" +
-      "------------------------------\n" +
-      "¡Gracias por utilizar la calculadora!";
-    alert(resultado);
-  }
-
-  // Llamar a la función para mostrar el resultado en una ventana emergente
-  mostrarResultado();
-}
+mostrarProductos();
  
