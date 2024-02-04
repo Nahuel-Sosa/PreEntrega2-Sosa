@@ -1,3 +1,9 @@
+.card {
+  width: 18rem;
+  margin-bottom: 20px;
+}
+
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
