@@ -1,13 +1,13 @@
  
 const productos = [
-  { id:1, nombre: " Cocacola", precio: 1900.99, img:'1.jpg'},
-  { id:2,nombre: "Fanta", precio: 1900.99 },
-  { id:3,nombre: "Sprite", precio: 1900.99 },
-  { id:4,nombre: "Quimes", precio: 2300.99 },
-  { id:5,nombre: "Fernet", precio: 7000.99 },
-  { id:6,nombre: "Gancia", precio: 5400.99 },
-  { id:7,nombre: "Campari", precio: 5200.99 },
-  { id:8,nombre: "Smirnof", precio: 10000.99 }]
+  { id:0, nombregit: " Cocacola", precio: 1900.99},
+  { id:1,nombre: "Fanta", precio: 1900.99 },
+  { id:2,nombre: "Sprite", precio: 1900.99 },
+  { id:3,nombre: "Quimes", precio: 2300.99 },
+  { id:4,nombre: "Fernet", precio: 7000.99 },
+  { id:5,nombre: "Gancia", precio: 5400.99 },
+  { id:6,nombre: "Campari", precio: 5200.99 },
+  { id:7,nombre: "Smirnof", precio: 10000.99 }]
   
   let carrito = [];
 
